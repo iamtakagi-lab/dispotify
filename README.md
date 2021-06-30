@@ -70,7 +70,6 @@ services:
   backend:
     container_name: backend
     image: iamtakagi/dispotify_backend:latest
-    env_file: ./backend/prisma/.env
     environment:
       TZ: Asia/Tokyo
       HOST: 0.0.0.0
@@ -156,7 +155,6 @@ services:
   backend:
     container_name: backend
     build: backend
-    env_file: ./backend/prisma/.env
     environment:
       TZ: Asia/Tokyo
       HOST: 0.0.0.0
