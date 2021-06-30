@@ -68,15 +68,16 @@ services:
       - 5432:5432
 
   backend:
-    container_name: iamtakagi/dispotify_frontend:latest
+    container_name: backend
+    image: iamtakagi/dispotify_backend:latest
     env_file: ./backend/prisma/.env
     environment:
       TZ: Asia/Tokyo
       HOST: 0.0.0.0
       PORT: 3001
       BASE_URI: /api
-      FRONTEND_BASE_URI: http://localhost:3000
-      SPOTIFY_REDIRECT_URI: http://localhost:3001/api/auth/callback
+      FRONTEND_BASE_URI: https://dispotify.iamtakagi.net
+      SPOTIFY_REDIRECT_URI: https://dispotify.iamtakagi.net/api/auth/callback
       # 入力必須
       SPOTIFY_CLIENT_ID: xxx
       SPOTIFY_CLIENT_SECRET: xxx
@@ -93,15 +94,20 @@ services:
       - db
 
   frontend:
-    container_name: iamtakagi/dispotify_frontend:latest
+    container_name: frontend
+    image: iamtakagi/dispotify_frontend:latest
     environment:
       TZ: Asia/Tokyo
       HOST: 0.0.0.0
       PORT: 3000
-      BACKEND_BASE_URI: http://localhost:3001/api
+      BACKEND_BASE_URI: https://dispotify.iamtakagi.net/api/
     restart: always
     ports:
       - 3000:3000
+    links: 
+      - backend
+    depends_on: 
+      - backend
 
 volumes:
     postgres-data:
@@ -167,7 +173,7 @@ services:
       - db-network
     ports:
       - 3001:3001
-    links: 
+    links:
       - db
     depends_on:
       - db
@@ -183,6 +189,10 @@ services:
     restart: always
     ports:
       - 3000:3000
+    links: 
+      - backend
+    depends_on: 
+      - backend
 
 volumes:
     postgres-data:
