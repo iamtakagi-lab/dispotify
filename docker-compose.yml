@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  nginx:
+    build: nginx
+    ports:
+        - 80:80
+    environment:
+        TZ: Asia/Tokyo
+    restart: always
+
+  db:
+    container_name: db
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: dispotify
+    restart: always
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - db-network
+    ports:
+      - 5432:5432
+
+  backend:
+    container_name: iamtakagi/dispotify_frontend:latest
+    env_file: ./backend/prisma/.env
+    environment:
+      TZ: Asia/Tokyo
+      HOST: 0.0.0.0
+      PORT: 3001
+      BASE_URI: /api
+      FRONTEND_BASE_URI: http://localhost:3000
+      SPOTIFY_REDIRECT_URI: http://localhost:3001/api/auth/callback
+      # 入力必須
+      SPOTIFY_CLIENT_ID: xxx
+      SPOTIFY_CLIENT_SECRET: xxx
+      # 再生中の音楽を検知するタスクのインターバル: 25秒以上を推奨 (それ以下にすると SpotifyAPI のRateLimit に引っ掛かり Too Many Request 429 の応答エラーが発生する可能性有)
+      PLAYER_WATCH_INTERVAL: 25000
+    restart: always
+    networks:
+      - db-network
+    ports:
+      - 3001:3001
+    links: 
+      - db
+    depends_on:
+      - db
+
+  frontend:
+    container_name: iamtakagi/dispotify_frontend:latest
+    environment:
+      TZ: Asia/Tokyo
+      HOST: 0.0.0.0
+      PORT: 3000
+      BACKEND_BASE_URI: http://localhost:3001/api
+    restart: always
+    ports:
+      - 3000:3000
+
+volumes:
+    postgres-data:
+
+networks:
+    db-network:
+      driver: bridge

@@ -1,0 +1,17 @@
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  userId        Int      @id @default(autoincrement())
+  spotifyId     String
+  accessToken   String
+  refreshToken  String
+  messageFormat String
+  webhookUrls   String[]
+}

@@ -1,0 +1,10 @@
+.DS_Store
+
+docker-compose.dev.yml
+
+/frontend/.next
+/frontend/node_modules
+
+/backend/.cache
+/backend/dist
+/backend/node_modules
