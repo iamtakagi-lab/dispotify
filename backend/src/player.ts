@@ -9,7 +9,6 @@ export default async () => {
   const storedData: Player[] = []
   const watch = () => {
     usersRepo.getAll().then((users: User[]) => {
-      console.debug(users)
       users.map(async (user: User) => {
         const spotify = new SpotifyWebApi({
           clientId: env.SPOTIFY_CLIENT_ID,
