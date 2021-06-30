@@ -89,9 +89,9 @@ services:
     ports:
       - 3001:3001
     links: 
-      - db
+      - postgres
     depends_on:
-      - db
+      - postgres
 
   frontend:
     container_name: frontend
@@ -175,9 +175,9 @@ services:
     ports:
       - 3001:3001
     links:
-      - db
+      - postgres
     depends_on:
-      - db
+      - postgres
 
   frontend:
     container_name: frontend
