@@ -12,10 +12,10 @@ export default {
     : 'http://localhost:3001/api/auth/callback',
   SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID
     ? process.env.SPOTIFY_CLIENT_ID
-    : '2e969d0e0f164bb1afeb212c94dc0bd2',
+    : '873ff81b3d4f4711adc2f56e54e039c6',
   SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET
     ? process.env.SPOTIFY_CLIENT_SECRET
-    : '33d9a770d73945ba8bca814561114000',
+    : '5f005d4cbc1f416680edee2d4070f8a3',
   PLAYER_WATCH_INTERVAL: process.env.PLAYER_WATCH_INTERVAL
     ? process.env.PLAYER_WATCH_INTERVAL
     : 25000,
