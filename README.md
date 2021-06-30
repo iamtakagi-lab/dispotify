@@ -29,7 +29,7 @@
   - [公開版](https://dispotify.iamtakagi.net) もありますが、ユーザー各自でインストールすることを推奨しています。
     - 多数ユーザーで利用されてしまうと、安定した動作が期待できません。そのため、できるだけ各自でインストールしてください。24時間継続的に動かせる環境がない等の事情がある方は [そちら](https://dispotify.iamtakagi.net) を利用してください。
 
-## Install
+## Installation
 ```console
 touch docker-compose.yml
 # Database Url 設定
@@ -108,7 +108,7 @@ volumes:
       driver: local
 ```
 
-## Installation
+## Devlopment
 `docker-compose.yml`
 ```yml
 version: '3.8'
