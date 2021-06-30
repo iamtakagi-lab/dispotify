@@ -52,7 +52,10 @@ export default async () => {
                 if (currentItem) {
                   user.webhookUrls.forEach(async (url) => {
                     const splitUrl = url.split('/')
-                    const webhook = new Discord.WebhookClient(splitUrl[5], splitUrl[6])
+                    const webhook = new Discord.WebhookClient(
+                      splitUrl[5],
+                      splitUrl[6]
+                    )
                     const format = user.messageFormat
                     const display_name = me.display_name
                     const track_url = `https://open.spotify.com/track/${

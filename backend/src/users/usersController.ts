@@ -11,7 +11,7 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
 export const me = async (req: Request, res: Response, next: NextFunction) => {
   const accessToken = req.cookies.accessToken
 
-  if(!accessToken) {
+  if (!accessToken) {
     return res.status(403)
   }
 
@@ -21,7 +21,7 @@ export const me = async (req: Request, res: Response, next: NextFunction) => {
     clientId: env.SPOTIFY_CLIENT_ID,
     clientSecret: env.SPOTIFY_CLIENT_SECRET,
     redirectUri: env.SPOTIFY_REDIRECT_URI,
-    accessToken: accessToken
+    accessToken: accessToken,
   })
 
   const spotifyUser = await (await spotify.getMe()).body
@@ -38,7 +38,7 @@ export const update = async (
 ) => {
   const accessToken = req.cookies.accessToken
 
-  if(!accessToken) {
+  if (!accessToken) {
     return res.status(403)
   }
 
@@ -64,14 +64,11 @@ export const update = async (
     return res.status(500)
   }
 
-  usersRepo.update(
-    user.userId,
-    splitWebhookUrls,
-    messageFormat
-  ).then((result) => {
-    res.json({ success: result })
-  })
-  
+  usersRepo
+    .update(user.userId, splitWebhookUrls, messageFormat)
+    .then((result) => {
+      res.json({ success: result })
+    })
 }
 
 export const deleteUser = async (
@@ -81,9 +78,9 @@ export const deleteUser = async (
 ) => {
   console.debug(req.cookies.accessToken)
   const user = await usersRepo.findByAccessToken(req.cookies.accessToken)
-  if(user === null) return res.status(404)
+  if (user === null) return res.status(404)
   usersRepo.delete(user.userId).then((result) => {
-    if(result) {
+    if (result) {
       res.clearCookie('accessToken')
       res.clearCookie('refreshToken')
     }
@@ -105,7 +102,7 @@ export const playing = async (
     refreshToken: refreshToken,
   })
   const user = await usersRepo.findByAccessToken(accessToken)
-  if(user === null) return res.status(404)
+  if (user === null) return res.status(404)
   spotify
     .getMyCurrentPlayingTrack()
     .then((data) => {
@@ -124,12 +121,13 @@ export const playing = async (
       spotify.getMyCurrentPlayingTrack().then((data) => {
         return data.body
       })
-    }).then((data) => {
+    })
+    .then((data) => {
       res.json(data)
-  })
+    })
 }
 
- /**
+/**
   const authHeader = req.headers.authorization
   if (!authHeader) {
     return res.status(403)

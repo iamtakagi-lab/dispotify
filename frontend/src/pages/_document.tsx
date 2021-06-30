@@ -6,6 +6,7 @@ import Document, {
   NextScript,
   DocumentContext,
 } from "next/document";
+import env from "../common/env";
 
 const ogImageUrl = "https://dispotify.iamtakagi.net/og-image.png";
 
@@ -29,7 +30,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
 
-          <title>dispotify.iamtakagi.net</title>
+          <title>dispotify</title>
           <meta property="og:title" content="dispotify.iamtakagi.net" />
           <meta property="og:description" content="dispotify.iamtakagi.net" />
           <meta property="og:url" content="https://dispotify.iamtakagi.net" />

@@ -71,20 +71,20 @@ export class UsersRepository {
   ): Promise<Boolean> {
     return new Promise(async (resolve, reject) => {
       const find = await this.findByUserId(userId)
-      if(find != null) {
-      const user = await this.db.client.user.update({
-        where: {
-          userId: userId,
-        },
-        data: {
-          webhookUrls: webhookUrls ? webhookUrls : find.webhookUrls,
-          messageFormat: messageFormat ? messageFormat : find.messageFormat
-        },
-      })
-      resolve(user ? true : false)
-    }else {
-      resolve(false)
-    }
+      if (find != null) {
+        const user = await this.db.client.user.update({
+          where: {
+            userId: userId,
+          },
+          data: {
+            webhookUrls: webhookUrls ? webhookUrls : find.webhookUrls,
+            messageFormat: messageFormat ? messageFormat : find.messageFormat,
+          },
+        })
+        resolve(user ? true : false)
+      } else {
+        resolve(false)
+      }
     })
   }
 
@@ -126,7 +126,7 @@ export class UsersRepository {
     return new Promise(async (resolve, reject) => {
       const user = await this.db.client.user.delete({
         where: {
-          userId: userId
+          userId: userId,
         },
       })
       resolve(user ? true : false)

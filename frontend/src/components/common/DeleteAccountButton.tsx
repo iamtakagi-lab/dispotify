@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { useCookies } from "react-cookie";
-import { FiDelete, FiTrash } from "react-icons/fi";
+import { FiTrash } from "react-icons/fi";
 import { useToasts } from "react-toast-notifications";
 import { useClient } from "../../hooks/client";
 

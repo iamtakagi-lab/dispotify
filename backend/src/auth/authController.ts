@@ -44,7 +44,7 @@ export const callback = async (
           clientSecret: env.SPOTIFY_CLIENT_SECRET,
           redirectUri: env.SPOTIFY_REDIRECT_URI,
           accessToken: data.access_token,
-          refreshToken: data.refresh_token
+          refreshToken: data.refresh_token,
         })
         const me = (await spotify.getMe()).body
         return Promise.all([me, data])

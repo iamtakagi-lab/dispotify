@@ -4,7 +4,6 @@ import { useCookies } from "react-cookie";
 import { useClient } from "../hooks/client";
 import { LogoutButton } from "../components/common/LogoutButton";
 import { Client } from "../client/Client";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useToasts } from "react-toast-notifications";
 import { Me } from "../typings/struct";
 import format from 'date-fns/format'
