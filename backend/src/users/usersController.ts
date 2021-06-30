@@ -8,6 +8,11 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
   res.json(JSON.stringify(await usersRepo.getAll()))
 }
 
+export const usersStatus = async (req: Request, res: Response, next: NextFunction) => {
+  const users = await usersRepo.getAll()
+  res.json({'usersCount' : users.length })
+}
+
 export const me = async (req: Request, res: Response, next: NextFunction) => {
   const accessToken = req.cookies.accessToken
 
