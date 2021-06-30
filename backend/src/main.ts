@@ -19,7 +19,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use(cors({ credentials: true, origin: true }))
-app.use(env.BASE_URI, router)
+app.use(env.BASE_URL, router)
 app.listen(env.PORT)
 ;(async () => {
   player()

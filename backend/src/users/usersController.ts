@@ -1,5 +1,5 @@
 import env from '../env'
-import { UpdateUserRequestBody } from '@/typings/struct'
+import { UserUpdateRequestBody } from '@/typings/struct'
 import { Request, Response, NextFunction } from 'express'
 import SpotifyWebApi from 'spotify-web-api-node'
 import { usersRepo } from '../main'
@@ -51,7 +51,7 @@ export const update = async (
 
   if (user === null) return res.status(404)
 
-  let { webhookUrls, messageFormat }: UpdateUserRequestBody = req.body
+  let { webhookUrls, messageFormat }: UserUpdateRequestBody = req.body
 
   if (!webhookUrls || !messageFormat) {
     return res.status(500)

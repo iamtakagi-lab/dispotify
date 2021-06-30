@@ -69,8 +69,8 @@ services:
       HOST: 0.0.0.0
       PORT: 3001
       BASE_URI: /api
-      FRONTEND_BASE_URI: https://dispotify.iamtakagi.net
-      SPOTIFY_REDIRECT_URI: https://dispotify.iamtakagi.net/api/auth/callback
+      FRONTEND_BASE_URL: https://dispotify.iamtakagi.net
+      SPOTIFY_REDIRECT_URL: https://dispotify.iamtakagi.net/api/auth/callback
       # 入力必須
       SPOTIFY_CLIENT_ID: xxx
       SPOTIFY_CLIENT_SECRET: xxx
@@ -91,7 +91,7 @@ services:
       TZ: Asia/Tokyo
       HOST: 0.0.0.0
       PORT: 3000
-      BACKEND_BASE_URI: https://dispotify.iamtakagi.net/api/
+      BACKEND_BASE_URL: https://dispotify.iamtakagi.net/api/
     restart: always
     ports:
       - 3000:3000
