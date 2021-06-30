@@ -68,7 +68,7 @@ services:
       - 5432:5432
 
   backend:
-    container_name: backend
+    container_name: dispotify_backend
     image: iamtakagi/dispotify_backend:latest
     environment:
       TZ: Asia/Tokyo
@@ -93,7 +93,7 @@ services:
       - postgres
 
   frontend:
-    container_name: frontend
+    container_name: dispotify_frontend
     image: iamtakagi/dispotify_frontend:latest
     environment:
       TZ: Asia/Tokyo
@@ -153,7 +153,7 @@ services:
       - 5432:5432
 
   backend:
-    container_name: backend
+    container_name: dispotify_backend
     build: backend
     environment:
       TZ: Asia/Tokyo
@@ -178,7 +178,7 @@ services:
       - postgres
 
   frontend:
-    container_name: frontend
+    container_name: dispotify_
     build: frontend
     environment:
       TZ: Asia/Tokyo
