@@ -152,6 +152,7 @@ services:
       - postgres-network
     ports:
       - 5432:5432
+      
   backend:
     container_name: backend
     build: backend
