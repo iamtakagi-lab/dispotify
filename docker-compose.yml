@@ -20,8 +20,6 @@ services:
     volumes:
       - ./db:/docker-entrypoint-initdb.d
       - postgres-data:/var/lib/postgresql/data
-    networks:
-      - postgres-network
     ports:
       - 5432:5432
 
@@ -41,8 +39,6 @@ services:
       # 再生中の音楽を検知するタスクのインターバル: 25秒以上を推奨 (それ以下にすると SpotifyAPI のRateLimit に引っ掛かり Too Many Request 429 の応答エラーが発生する可能性有)
       PLAYER_WATCH_INTERVAL: 25000
     restart: always
-    networks:
-      - postgres-network
     ports:
       - 3001:3001
     links: 
@@ -69,7 +65,3 @@ services:
 volumes:
     postgres-data:
       driver: local
-
-networks:
-    postgres-network:
-      driver: bridge
