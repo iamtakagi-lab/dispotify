@@ -34,15 +34,15 @@ jobs:
 
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
-        working-directory: ${{BACKEND_WORKING_DIR}}
+        working-directory: ${{env.BACKEND_WORKING_DIR}}
 
       - name: Lint ESLint
         run: yarn lint:eslint
-        working-directory: ${{BACKEND_WORKING_DIR}}
+        working-directory: ${{env.BACKEND_WORKING_DIR}}
         
       - name: Lint Prettier
         run: yarn lint:prettier
-        working-directory: ${{BACKEND_WORKING_DIR}}
+        working-directory: ${{env.BACKEND_WORKING_DIR}}
     
   lint-frontend:
     runs-on: ubuntu-latest
