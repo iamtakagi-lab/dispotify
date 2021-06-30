@@ -11,6 +11,7 @@ export type Me = {
 }
 
 export type Env = {
+    HOST: string
     PORT: string
     BACKEND_BASE_URI: string
 }

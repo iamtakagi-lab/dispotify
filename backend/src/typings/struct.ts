@@ -1,10 +1,11 @@
 import { User } from '@prisma/client'
 
-export type Env = {
+export type Env = { 
+  HOST: string
+  PORT: string
   BASE_URI: string
   FRONTEND_BASE_URI: string
   SPOTIFY_REDIRECT_URI: string
-  PORT: string
   SPOTIFY_CLIENT_ID: string
   SPOTIFY_CLIENT_SECRET: string
   PLAYER_WATCH_INTERVAL: number
