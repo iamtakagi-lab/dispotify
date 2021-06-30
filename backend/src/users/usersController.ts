@@ -10,7 +10,7 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
 
 export const usersStatus = async (req: Request, res: Response, next: NextFunction) => {
   const users = await usersRepo.getAll()
-  if(users && users.length){
+  if(users){
     return res.json({'usersCount' : users.length })
   }
   res.json({'usersCount' : 0 })
