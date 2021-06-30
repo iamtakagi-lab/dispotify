@@ -5,7 +5,7 @@ COPY package.json yarn.lock ./
 RUN yarn
 COPY ./ ./
 RUN yarn prisma:generate
-# RUN yarn build
+RUN yarn build
 COPY ./ ./
 
-CMD [ "yarn", "dev" ]
+CMD [ "yarn", "start" ]
