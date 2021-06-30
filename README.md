@@ -85,7 +85,7 @@ services:
       PLAYER_WATCH_INTERVAL: 25000
     restart: always
     networks:
-      - db-network
+      - postgres-network
     ports:
       - 3001:3001
     links: 
@@ -152,7 +152,7 @@ services:
       - postgres-network
     ports:
       - 5432:5432
-      
+
   backend:
     container_name: backend
     build: backend
@@ -171,7 +171,7 @@ services:
       PLAYER_WATCH_INTERVAL: 25000
     restart: always
     networks:
-      - db-network
+      - postgres-network
     ports:
       - 3001:3001
     links:

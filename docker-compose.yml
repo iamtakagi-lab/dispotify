@@ -43,7 +43,7 @@ services:
       PLAYER_WATCH_INTERVAL: 25000
     restart: always
     networks:
-      - db-network
+      - postgres-network
     ports:
       - 3001:3001
     links: 
