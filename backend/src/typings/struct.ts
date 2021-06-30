@@ -3,8 +3,8 @@ import { User } from '@prisma/client'
 export type Env = { 
   HOST: string
   PORT: string
-  BASE_URI: string
-  FRONTEND_BASE_URI: string
+  BASE_URL: string
+  FRONTEND_BASE_URL: string
   SPOTIFY_REDIRECT_URI: string
   SPOTIFY_CLIENT_ID: string
   SPOTIFY_CLIENT_SECRET: string
@@ -16,7 +16,7 @@ export type Player = {
   track: SpotifyApi.CurrentlyPlayingResponse
 }
 
-export type UpdateUserRequestBody = {
+export type UserUpdateRequestBody = {
   webhookUrls?: string
   messageFormat?: string
 }

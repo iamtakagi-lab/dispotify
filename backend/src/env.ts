@@ -3,9 +3,9 @@ import { Env } from './typings/struct'
 export default {
   HOST: process.env.HOST ? process.env.HOST : '0.0.0.0',
   PORT: process.env.PORT ? process.env.PORT : '3001',
-  BASE_URI: process.env.BASE_URI ? process.env.BASE_URI : '/api',
-  FRONTEND_BASE_URI: process.env.FRONTEND_BASE_URI
-    ? process.env.FRONTEND_BASE_URI
+  BASE_URL: process.env.BASE_URL ? process.env.BASE_URL : '/api',
+  FRONTEND_BASE_URL: process.env.FRONTEND_BASE_URL
+    ? process.env.FRONTEND_BASE_URL
     : 'http://localhost:3000',
   SPOTIFY_REDIRECT_URI: process.env.SPOTIFY_REDIRECT_URI
     ? process.env.SPOTIFY_REDIRECT_URI

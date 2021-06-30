@@ -10,11 +10,11 @@ export const login = async (
   next: NextFunction
 ) => {
   if (req.cookies.accessToken) {
-    return res.redirect(env.FRONTEND_BASE_URI)
+    return res.redirect(env.FRONTEND_BASE_URL)
   }
 
   var scope =
-    'user-read-private user-read-playback-state playlist-modify-public playlist-modify-private'
+    'user-read-currently-playing'
   res.redirect(
     'https://accounts.spotify.com/authorize?' +
       stringify({
@@ -65,7 +65,7 @@ export const callback = async (
         }
         res.cookie('accessToken', data.access_token, { maxAge: 1000 * 3600 })
         res.cookie('refreshToken', data.refresh_token)
-        res.redirect(env.FRONTEND_BASE_URI)
+        res.redirect(env.FRONTEND_BASE_URL)
       })
       .catch((e: any) => {
         console.error('Error: ', e, e.stack)
@@ -82,5 +82,5 @@ export const logout = async (
 ) => {
   res.clearCookie('accessToken')
   res.clearCookie('refreshToken')
-  res.redirect(env.FRONTEND_BASE_URI)
+  res.redirect(env.FRONTEND_BASE_URL)
 }

@@ -15,10 +15,10 @@ export type Me = {
 export type Env = {
     HOST: string
     PORT: string
-    BACKEND_BASE_URI: string
+    BACKEND_BASE_URL: string
 }
 
-export type DeleteUserResponse = {
+export type UserDeleteResponse = {
     success: boolean
 }
 
