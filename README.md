@@ -7,15 +7,15 @@
 [![issues](https://img.shields.io/github/issues/iamtakagi/dispotify)](https://github.com/iamtakagi/dispotify/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/iamtakagi/dispotify)](https://github.com/iamtakagi/dispotify/pulls)
 
-## 特徴
-- Spotify x Discord
-- 場所を選ばず、手軽にアクセス可能な、Webアプリ
-- ユーザーは設定不要
-- 誰でも、簡単なUIで設定可能
-- Dockerで簡単にセットアップ可能
-
-## 概要・開発動機
-- 以前から公式のSpotifyアプリに再生履歴が無いことに不便さを感じており、開発しました。
+## Summary
+- 特徴
+  - Spotify x Discord
+  - 場所を選ばず、手軽にアクセス可能な、Webアプリ
+  - ユーザーは設定不要
+  - 誰でも、簡単なUIで設定可能
+  - Dockerで簡単にセットアップ可能
+- 開発動機
+  - 以前から公式のSpotifyアプリに再生履歴が無いことに不便さを感じており、開発しました。
     - このアプリを利用するメリット
         - Spotifyの再生履歴がわかる
         - Discordで共有できる
@@ -25,12 +25,11 @@
 - 貢献について
     - 新機能提案・不具合報告は [Issues](https://github.com/iamtakagi/dispotify/issues) にお願いします。
     - [Pull Requests](https://github.com/dispotify/pulls) も歓迎しています。
+- 使い方
+  - [公開版](https://dispotify.iamtakagi.net) もありますが、ユーザー各自でインストールすることを推奨しています。
+    - 多数ユーザーで利用されてしまうと、安定した動作が期待できません。そのため、できるだけ各自でインストールしてください。24時間継続的に動かせる環境がない等の事情がある方は [そちら](https://dispotify.iamtakagi.net) を利用してください。
 
-## 使い方
-- [公開版](https://dispotify.iamtakagi.net) もありますが、ユーザー各自でインストールすることを推奨しています。
-  - 多数ユーザーで利用されてしまうと、安定した動作が期待できません。そのため、できるだけ各自でインストールしてください。24時間継続的に動かせる環境がない等の事情がある方は [そちら](https://dispotify.iamtakagi.net) を利用してください。
-
-## インストール
+## Install
 ```console
 touch docker-compose.yml
 # Database Url 設定
@@ -62,13 +61,11 @@ services:
     volumes:
       - ./db:/docker-entrypoint-initdb.d
       - postgres-data:/var/lib/postgresql/data
-    networks:
-      - postgres-network
     ports:
       - 5432:5432
 
   backend:
-    container_name: backend
+    container_name: dispotify_backend
     image: iamtakagi/dispotify_backend:latest
     environment:
       TZ: Asia/Tokyo
@@ -83,8 +80,6 @@ services:
       # 再生中の音楽を検知するタスクのインターバル: 25秒以上を推奨 (それ以下にすると SpotifyAPI のRateLimit に引っ掛かり Too Many Request 429 の応答エラーが発生する可能性有)
       PLAYER_WATCH_INTERVAL: 25000
     restart: always
-    networks:
-      - postgres-network
     ports:
       - 3001:3001
     links: 
@@ -93,7 +88,7 @@ services:
       - postgres
 
   frontend:
-    container_name: frontend
+    container_name: dispotify_frontend
     image: iamtakagi/dispotify_frontend:latest
     environment:
       TZ: Asia/Tokyo
@@ -111,18 +106,9 @@ services:
 volumes:
     postgres-data:
       driver: local
-
-networks:
-    postgres-network:
-      driver: bridge
 ```
 
-## 開発
-```console
-cd backend && yarn
-cd frontend && yarn && yarn prisma:generate
-```
-
+## Installation
 `docker-compose.yml`
 ```yml
 version: '3.8'
@@ -147,13 +133,11 @@ services:
     volumes:
       - ./db:/docker-entrypoint-initdb.d
       - postgres-data:/var/lib/postgresql/data
-    networks:
-      - postgres-network
     ports:
       - 5432:5432
 
   backend:
-    container_name: backend
+    container_name: dispotify_backend
     build: backend
     environment:
       TZ: Asia/Tokyo
@@ -168,8 +152,6 @@ services:
       # 再生中の音楽を検知するタスクのインターバル: 25秒以上を推奨 (それ以下にすると SpotifyAPI のRateLimit に引っ掛かり Too Many Request 429 の応答エラーが発生する可能性有)
       PLAYER_WATCH_INTERVAL: 25000
     restart: always
-    networks:
-      - postgres-network
     ports:
       - 3001:3001
     links:
@@ -178,7 +160,7 @@ services:
       - postgres
 
   frontend:
-    container_name: frontend
+    container_name: dispotify_frontend
     build: frontend
     environment:
       TZ: Asia/Tokyo
@@ -196,8 +178,4 @@ services:
 volumes:
     postgres-data:
       driver: local
-
-networks:
-    postgres-network:
-      driver: bridge
 ```
