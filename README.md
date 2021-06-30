@@ -25,9 +25,6 @@
 - 貢献について
     - 新機能提案・不具合報告は [Issues](https://github.com/iamtakagi/dispotify/issues) にお願いします。
     - [Pull Requests](https://github.com/dispotify/pulls) も歓迎しています。
-- 使い方
-  - [公開版](https://dispotify.iamtakagi.net) もありますが、ユーザー各自でインストールすることを推奨しています。
-    - 多数ユーザーで利用されてしまうと、安定した動作が期待できません。そのため、できるだけ各自でインストールしてください。24時間継続的に動かせる環境がない等の事情がある方は [そちら](https://dispotify.iamtakagi.net) を利用してください。
 
 ## Installation
 ```console
