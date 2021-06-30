@@ -6,7 +6,7 @@
 [![Deploy](https://github.com/iamtakagi/dispotify/actions/workflows/deploy.yml/badge.svg)](https://github.com/iamtakagi/dispotify/actions/workflows/deploy.yml)
 [![license](https://img.shields.io/github/license/iamtakagi/dispotify)](https://github.com/iamtakagi/dispotify/blob/master/LICENSE)
 [![issues](https://img.shields.io/github/issues/iamtakagi/dispotify)](https://github.com/iamtakagi/dispotify/issues)
-[![pull requests](https://img.shields.io/github/issues-pr/iamtakagi/dispotify)](https://github.com/dispotify/pulls)
+[![pull requests](https://img.shields.io/github/issues-pr/iamtakagi/dispotify)](https://github.com/iamtakagi/dispotify/pulls)
 
 ## 特徴
 - Spotify x Discord
