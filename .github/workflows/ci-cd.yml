@@ -18,8 +18,8 @@ on:
      paths-ignore:
       - '*.md'
 env:
-  PYTHON_WORKING_DIR: python
-  FRONTEND_WORKING_DIR: next
+  BACKEND_WORKING_DIR: backend
+  FRONTEND_WORKING_DIR: frontend
 
 jobs:
         
@@ -34,15 +34,15 @@ jobs:
 
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
-        working-directory: ${{env.BACKEND_WORKING_DIR}}
+        working-directory: ${{BACKEND_WORKING_DIR}}
 
       - name: Lint ESLint
         run: yarn lint:eslint
-        working-directory: ${{env.BACKEND_WORKING_DIR}}
+        working-directory: ${{BACKEND_WORKING_DIR}}
         
       - name: Lint Prettier
         run: yarn lint:prettier
-        working-directory: ${{env.BACKEND_WORKING_DIR}}
+        working-directory: ${{BACKEND_WORKING_DIR}}
     
   lint-frontend:
     runs-on: ubuntu-latest
