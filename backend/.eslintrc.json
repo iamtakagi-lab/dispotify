@@ -1,0 +1,22 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+      "prettier/@typescript-eslint"
+    ],
+    "env": {
+      "node": true
+    },
+    "overrides": [
+      {
+        "files": ["*.ts"],
+        "rules": {
+          "no-undef": "off"
+        }
+      }
+    ]
+  }
