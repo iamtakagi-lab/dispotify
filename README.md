@@ -51,8 +51,8 @@ services:
         TZ: Asia/Tokyo
     restart: always
 
-  db:
-    container_name: db
+  postgres:
+    container_name: postgres
     image: postgres
     environment:
       POSTGRES_USER: root
@@ -63,7 +63,7 @@ services:
       - ./db:/docker-entrypoint-initdb.d
       - postgres-data:/var/lib/postgresql/data
     networks:
-      - db-network
+      - postgres-network
     ports:
       - 5432:5432
 
@@ -111,9 +111,10 @@ services:
 
 volumes:
     postgres-data:
+      driver: local
 
 networks:
-    db-network:
+    postgres-network:
       driver: bridge
 ```
 
@@ -136,8 +137,8 @@ services:
         TZ: Asia/Tokyo
     restart: always
 
-  db:
-    container_name: db
+  postgres:
+    container_name: postgres
     image: postgres
     environment:
       POSTGRES_USER: root
@@ -148,10 +149,9 @@ services:
       - ./db:/docker-entrypoint-initdb.d
       - postgres-data:/var/lib/postgresql/data
     networks:
-      - db-network
+      - postgres-network
     ports:
       - 5432:5432
-
   backend:
     container_name: backend
     build: backend
@@ -196,8 +196,9 @@ services:
 
 volumes:
     postgres-data:
+      driver: local
 
 networks:
-    db-network:
+    postgres-network:
       driver: bridge
 ```
