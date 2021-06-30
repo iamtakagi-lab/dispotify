@@ -11,11 +11,15 @@
     "build": "parcel build --target node src/main.ts",
     "prisma:generate": "npx prisma generate",
     "prisma:migrate": "npx prisma migrate dev --name init",
-    "typecheck": "tsc --noEmit",
-    "prettier": "prettier --write .",
-    "eslint": "eslint . --format friendly",
     "test": "jest",
-    "test:watch": "jest --coverage --silent=false --verbose false --watch"
+    "test:watch": "jest --coverage --silent=false --verbose false --watch",
+    "typecheck": "tsc --noEmit",
+    "lint:prettier": "prettier . --check",
+    "lint:eslint": "eslint . --format friendly",
+    "lint": "run-p lint:*",
+    "fix:prettier": "yarn lint:prettier --write",
+    "fix:eslint": "yarn lint:eslint --fix",
+    "fix": "run-s fix:eslint fix:prettier"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.2",
