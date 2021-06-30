@@ -6,7 +6,6 @@ import { LogoutButton } from "../components/common/LogoutButton";
 import { Client } from "../client/Client";
 import { useToasts } from "react-toast-notifications";
 import { Me } from "../typings/struct";
-import format from 'date-fns/format'
 import { DeleteAccountButton } from "../components/common/DeleteAccountButton";
 import { FiSave } from "react-icons/fi";
 
@@ -28,6 +27,7 @@ const IndexPage: React.VFC<{}> = () => {
       client.getMe().then((data: Me) => {
         setMe(data)
         const user = data.user
+        if(!user) return
         setMessageFormat(user.messageFormat)
         let urls = ""
         for (let i = 0; i < user.webhookUrls.length; i++) {

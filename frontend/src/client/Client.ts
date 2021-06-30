@@ -1,6 +1,6 @@
 import axios from "axios";
 import env from "../common/env";
-import { Me } from "../typings/struct";
+import { DeleteUserResponse, Me, User, UsersStatus } from "../typings/struct";
 
 export class Client {
   public url: string;
@@ -17,18 +17,23 @@ export class Client {
     });
   }
 
+  async getUsersStatus() {
+    const {data} = await this.client.get<UsersStatus>("/users/status")
+    return data
+  }
+
   async getMe() {
     const {data} = await this.client.get<Me>("/users/me")
     return data
   }
 
   async getPlaying() {
-    const {data} = await this.client.get("/users/playing")
+    const {data} = await this.client.get<any>("/users/playing")
     return data
   }
 
   async updateUser(webhookUrls: string, messageFormat: string) {
-    const {data} = await this.client.put("/users", {
+    const {data} = await this.client.put<User>("/users", {
       webhookUrls: webhookUrls,
       messageFormat: messageFormat
     })
@@ -36,7 +41,7 @@ export class Client {
   }
 
   async deleteUser() {
-    const {data} = await this.client.delete<any>("/users")
+    const {data} = await this.client.delete<DeleteUserResponse>("/users")
     return data
   }
 
