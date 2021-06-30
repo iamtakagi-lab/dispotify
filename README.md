@@ -24,7 +24,7 @@
 - 素人が作ったWebアプリなので、不具合等、至らない点あると思いますが、改善や新機能を実装する開発を続けていくと思います。
 - 貢献について
     - 新機能提案・不具合報告は [Issues](https://github.com/iamtakagi/dispotify/issues) にお願いします。
-    - [Pull Requests](https://github.com/dispotify/pulls) も歓迎しています。
+    - [Pull Requests](https://github.com/dispotify/pulls) も歓迎します。
 
 ## Installation
 ```console
