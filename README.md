@@ -1,7 +1,7 @@
 # dispotify
 🎧 Spotify to Discord notifier / Spotifyで再生中の音楽をDiscordに通知する Web アプリ
 
-Vercel向けに書き直してます...　しばらくお待ちください
+Vercel向けに書き直しています...　しばらくお待ちください
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/iamtakagi/dispotify)](https://github.com/iamtakagi/dispotify/releases)
 [![Deploy](https://github.com/iamtakagi/dispotify/actions/workflows/deploy.yml/badge.svg)](https://github.com/iamtakagi/dispotify/actions/workflows/deploy.yml)
