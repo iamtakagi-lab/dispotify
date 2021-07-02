@@ -180,3 +180,6 @@ volumes:
     postgres-data:
       driver: local
 ```
+
+# LICENSE
+iamtakagi/dispotify is provided under the MIT license.
