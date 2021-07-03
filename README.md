@@ -1,5 +1,5 @@
 # dispotify
-🎧 Spotify to Discord notifier / Spotifyで再生中の音楽をDiscordに通知する Web アプリ
+(WIP) 🎧 Spotify to Discord notifier / Spotifyで再生中の音楽をDiscordに通知する Web アプリ
 
 Vercel向けに書き直しています...
 
