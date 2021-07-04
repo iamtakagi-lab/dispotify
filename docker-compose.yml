@@ -1,67 +1,36 @@
 version: '3.8'
 
 services:
-  nginx:
-    build: nginx
-    ports:
-        - 80:80
-    environment:
-        TZ: Asia/Tokyo
+  web:
+    container_name: web
+    build: .
+    env_file: ./config/web.env
     restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - internal_network
+      - external_network
+    links:
+      - postgres
 
-  postgres:
-    container_name: postgres
+  db:
+    container_name: db
     image: postgres
-    environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: dispotify
+    env_file:
+      - ./config/db.env
     restart: always
     volumes:
       - ./db:/docker-entrypoint-initdb.d
       - postgres-data:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-
-  backend:
-    container_name: dispotify_backend
-    image: iamtakagi/dispotify_backend:latest
-    environment:
-      TZ: Asia/Tokyo
-      HOST: 0.0.0.0
-      PORT: 3001
-      BASE_URL: /api
-      FRONTEND_BASE_URL: https://dispotify.iamtakagi.net
-      SPOTIFY_REDIRECT_URI: https://dispotify.iamtakagi.net/api/auth/callback
-      # 入力必須
-      SPOTIFY_CLIENT_ID: xxx
-      SPOTIFY_CLIENT_SECRET: xxx
-      # 再生中の音楽を検知するタスクのインターバル: 25秒以上を推奨 (それ以下にすると SpotifyAPI のRateLimit に引っ掛かり Too Many Request 429 の応答エラーが発生する可能性有)
-      PLAYER_WATCH_INTERVAL: 25000
-    restart: always
-    ports:
-      - 3001:3001
-    links: 
-      - postgres
-    depends_on:
-      - postgres
-
-  frontend:
-    container_name: dispotify_frontend
-    image: iamtakagi/dispotify_frontend:latest
-    environment:
-      TZ: Asia/Tokyo
-      HOST: 0.0.0.0
-      PORT: 3000
-      BACKEND_BASE_URL: https://dispotify.iamtakagi.net/api/
-    restart: always
-    ports:
-      - 3000:3000
-    links: 
-      - backend
-    depends_on: 
-      - backend
+    networks:
+      - internal_network
 
 volumes:
-    postgres-data:
-      driver: local
+  postgres-data:
+    driver: local
+
+networks:
+  internal_network:
+    internal: true
+  external_network:

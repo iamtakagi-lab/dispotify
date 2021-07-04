@@ -1,10 +1,10 @@
 .DS_Store
 
-docker-compose.dev.yml
+.cache
+.vscode
+dist
+.next
+node_modules
 
-/frontend/.next
-/frontend/node_modules
-
-/backend/.cache
-/backend/dist
-/backend/node_modules
+db.env
+web.env
