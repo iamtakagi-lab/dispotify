@@ -1,34 +1,12 @@
 # dispotify
-(WIP) 🎧 Spotify to Discord notifier / Spotifyで再生中の音楽をDiscordに通知する Web アプリ
+🎧 Spotify to Discord notifier / Spotifyで再生中の音楽をDiscordに通知する Web アプリ
 
-Vercel向けに書き直しています...
-
-しばらくお待ちください
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/iamtakagi/dispotify)](https://github.com/iamtakagi/dispotify/releases)
 [![Deploy](https://github.com/iamtakagi/dispotify/actions/workflows/deploy.yml/badge.svg)](https://github.com/iamtakagi/dispotify/actions/workflows/deploy.yml)
 [![license](https://img.shields.io/github/license/iamtakagi/dispotify)](https://github.com/iamtakagi/dispotify/blob/master/LICENSE)
 [![issues](https://img.shields.io/github/issues/iamtakagi/dispotify)](https://github.com/iamtakagi/dispotify/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/iamtakagi/dispotify)](https://github.com/iamtakagi/dispotify/pulls)
-
-## Summary
-- 特徴
-  - Spotify x Discord
-  - 場所を選ばず、手軽にアクセス可能な、Webアプリ
-  - ユーザーは設定不要
-  - 誰でも、簡単なUIで設定可能
-  - Dockerで簡単にセットアップ可能
-- 開発動機
-  - 以前から公式のSpotifyアプリに再生履歴が無いことに不便さを感じており、開発に至りました。
-    - このアプリを利用するメリット
-        - Spotifyの再生履歴がわかる
-        - Discordで共有できる
-        - Discord Presence だと見逃しがちな他ユーザーの聴いた曲がわかる。(チャンネル非公開でも使えるので、プライベート利用もOK)
-        - 等の点において便利な活用ができると考えました。
-- 素人が作ったWebアプリなので、不具合等、至らない点あると思いますが、改善や新機能を実装する開発を続けていくと思います。
-- 貢献について
-    - 新機能提案・不具合報告は [Issues](https://github.com/iamtakagi/dispotify/issues) にお願いします。
-    - [Pull Requests](https://github.com/dispotify/pulls) も歓迎します。
 
 ## Installation
 ```console
