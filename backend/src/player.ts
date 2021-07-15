@@ -57,12 +57,13 @@ export default async () => {
                     )
                     const format = user.messageFormat
                     const display_name = me.display_name
-                    const track_url = `https://open.spotify.com/track/${
-                      currentItem.uri.split(':')[2]
-                    }`
+                    const track_id = currentItem.uri.split(':')[2]
+                    const track_url = `https://open.spotify.com/track/${track_id}`
+                    const scrapbox_link = `[https://spotify2image.vercel.app/image/track/${track_id}#.png https://open.spotify.com/track/${track_id}]`
                     const message = format
                       .replace('%name%', display_name || me.id)
                       .replace('%track_url%', track_url)
+                      .replace('%scrapbox_link%', scrapbox_link)
                     await webhook.send(message)
                     /** 
                     if(!a){
